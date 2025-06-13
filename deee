@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Motodocia Dijital & SEO Analiz Sunumu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,600,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --main-bg: #181A1B;
+      --accent: #E10600;
+      --accent2: #F6D365;
+      --white: #fff;
+      --card-bg: rgba(28,29,30,0.96);
+      --card-vignette: linear-gradient(120deg, #252323b8 65%, #191b1f 100%);
+      --shadow: 0 6px 32px rgba(0,0,0,0.10);
+      --footer-bg: #101011;
+      --ykb-blue: #003366;
+    }
+    html, body {
+      margin: 0; padding: 0;
+      min-height: 100%;
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: var(--white);
+      background: var(--main-bg);
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      /* Motosikletli arka plan */
+      background-image: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&fit=crop&w=1500&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.19;
+      pointer-events: none;
+      filter: grayscale(0.4) blur(1px);
+    }
+    header {
+      z-index: 2;
+      text-align: center;
+      padding: 3.7rem 1rem 2.2rem 1rem;
+      background: linear-gradient(180deg, #191b1b 65%, #222 100%);
+      border-bottom-left-radius: 32px;
+      border-bottom-right-radius: 32px;
+      box-shadow: 0 8px 48px #0008;
+      position: relative;
+    }
+    .logo {
+      width: 128px;
+      filter: drop-shadow(2px 7px 18px #0008);
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2.7rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+      margin: 1rem 0 0 0;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent2) 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      text-shadow: 0 2px 16px #0008;
+      line-height: 1.09;
+    }
+    .subtitle {
+      font-size: 1.23rem;
+      color: #fff;
+      opacity: 0.92;
+      margin-bottom: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 1.1px;
+    }
+    .ykbsoft-badge {
+      display: inline-block;
+      font-weight: 700;
+      font-size: 1.15em;
+      letter-spacing: 1px;
+      color: #fff;
+      background: var(--accent);
+      padding: 6px 18px;
+      border-radius: 16px 6px 18px 6px;
+      margin-top: 1.2em;
+      box-shadow: 0 3px 16px #0005;
+    }
+    main {
+      z-index: 2;
+      position: relative;
+      max-width: 1150px;
+      margin: 2.5rem auto 0 auto;
+      padding: 0 1.2em;
+    }
+    section {
+      margin: 0 auto 3.5rem auto;
+      position: relative;
+      z-index: 2;
+    }
+    .section-title {
+      font-size: 2.1rem;
+      color: var(--white);
+      font-weight: 800;
+      letter-spacing: 1.1px;
+      margin: 0 0 1.7rem 0;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-shadow: 0 2px 16px #0008;
+    }
+    .section-title i {
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 1.15em;
+      padding: 0.33em;
+      box-shadow: 0 2px 8px #0003;
+    }
+    .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      z-index: 2;
+      position: relative;
+    }
+    .card {
+      background: var(--card-vignette), var(--card-bg);
+      border-radius: 21px;
+      box-shadow: var(--shadow);
+      padding: 2.1rem 2rem 2rem 2rem;
+      min-width: 315px;
+      max-width: 430px;
+      flex: 1 1 330px;
+      margin-bottom: 1.5rem;
+      transition: transform 0.17s, box-shadow 0.17s, border 0.17s;
+      border: 1.5px solid #232323;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: translateY(-7px) scale(1.017);
+      box-shadow: 0 8px 40px #00000022, var(--shadow);
+      border: 1.5px solid var(--accent);
+    }
+    .card .icon {
+      font-size: 2.15rem;
+      color: var(--accent2);
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+    .card h3 {
+      font-size: 1.23rem;
+      margin-top: 0;
+      margin-bottom: 0.7em;
+      color: #fff;
+      font-weight: 700;
+    }
+    .card ul, .card ol {
+      padding-left: 1.3em;
+      margin: 0.7em 0 0 0;
+      font-size: 1.08rem;
+      color: #eaeaea;
+    }
+    .card li { margin-bottom: 0.5em; }
+    .card-table {
+      width: 100%;
+      margin: 1em 0;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+      color: #fff;
+      font-size: 1.045rem;
+      border-collapse: collapse;
+    }
+    .card-table th, .card-table td {
+      padding: 8px 13px;
+      text-align: left;
+    }
+    .card-table th {
+      color: var(--accent2);
+      font-weight: bold;
+      background: rgba(0,0,0,0.18);
+      border-bottom: 1px solid #353535;
+    }
+    .card-table td { border-bottom: 1px solid #232323; }
+    .swot-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+      margin: 1.2em 0 0.7em 0;
+    }
+    .swot-card {
+      background: #222225e8;
+      border-radius: 16px;
+      box-shadow: 0 2px 14px #0003;
+      padding: 1.1em 1em;
+      min-height: 180px;
+      border-top: 6px solid var(--accent2);
+      font-size: 1.09rem;
+      color: #fff;
+    }
+    .swot-card strong {
+      color: var(--accent2);
+      display: block;
+      margin-bottom: .5em;
+      font-size: 1.13em;
+    }
+    .kpi-list {
+      background: #232121;
+      border-left: 4px solid var(--accent2);
+      padding: 1em 1.2em;
+      border-radius: 12px;
+      margin: 1em 0 0.5em 0;
+      font-size: 1.09rem;
+      color: #ffe;
+    }
+    .journey-steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 1.5em 0;
+      justify-content: space-between;
+    }
+    .journey-step {
+      background: #191919f2;
+      border: 1px solid var(--accent2);
+      border-radius: 12px;
+      padding: 1em 1.2em;
+      min-width: 170px;
+      font-size: 0.98rem;
+      color: var(--white);
+      flex: 1;
+      box-shadow: 0 2px 8px #0002;
+      margin-bottom: 0.7em;
+    }
+    .journey-step strong {
+      color: var(--accent);
+    }
+    .faq-block {
+      background: #232323;
+      border: 1px solid var(--accent2);
+      border-radius: 14px;
+      margin: 1.2em 0;
+      padding: 1em 1.3em;
+      color: #fff;
+    }
+    .faq-block strong { color: var(--accent2);}
+    .social-proof {
+      background: #1c2231;
+      border: 1px solid #5ecbfa;
+      border-radius: 12px;
+      padding: 0.7em 1.2em;
+      margin: 1.2em 0;
+      font-size: 1rem;
+      color: #77b7f6;
+      font-style: italic;
+    }
+    .security-list {
+      background: #1e2321;
+      border: 1px solid #65d6a8;
+      border-radius: 10px;
+      padding: 0.75em 1.2em;
+      margin: 1.2em 0;
+      font-size: 1rem;
+      color: #d5ffe4;
+    }
+    footer {
+      max-width: 950px;
+      margin: 5rem auto 2em auto;
+      padding: 2.5em 1em 2em 1em;
+      font-size: 1.09rem;
+      color: #fff;
+      background: var(--footer-bg);
+      border-radius: 0 0 24px 24px;
+      box-shadow: 0 4px 24px #0008;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .footer-ykbsoft-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      margin-top: 1.7em;
+      font-weight: bold;
+      background: #fff;
+      color: #003366;
+      border-radius: 8px;
+      padding: 7px 18px 7px 10px;
+      font-size: 1.12em;
+      box-shadow: 0 2px 8px #0002;
+      transition: color 0.2s, box-shadow 0.2s;
+    }
+    .footer-ykbsoft-link:hover { color: var(--accent); box-shadow: 0 6px 18px #00336644;}
+    .footer-ykbsoft-logo {
+      height: 34px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 2px 4px #0002;
+    }
+    @media (max-width: 1050px) {
+      .swot-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 750px) {
+      .card-grid { flex-direction: column; gap: 1.3rem;}
+      .swot-grid { grid-template-columns: 1fr; }
+      main { padding: 0 0.2em;}
+      .section-title { font-size: 1.13rem;}
+    }
+    @media (max-width: 600px) {
+      .logo { width: 70px;}
+      h1 { font-size: 1.2rem;}
+      .card { min-width: 0; padding: 1rem;}
+      footer { font-size: 0.92rem; }
+      .section-title { font-size: 1rem;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="motodocia-logo.png" alt="Motodocia Logo" class="logo">
+    <h1>Motodocia Dijital & SEO Analiz Sunumu</h1>
+    <div class="subtitle">Motosiklet dünyasında dijitalde <span style="color:var(--accent2);font-weight:700;">en iyisi</span> olmak için…</div>
+    <span class="ykbsoft-badge">ykbsoft</span>
+  </header>
+  <main>
+    <section>
+      <div class="section-title"><i class="fas fa-bullseye"></i> Giriş & Hedefler</div>
+      <div class="card-grid">
+        <div class="card">
+          <span class="icon"><i class="fas fa-motorcycle"></i></span>
+          <h3>Motodocia Kimdir?</h3>
+          <ul>
+            <li>Kayseri’de motosiklet, kask ve ekipman satışı, bakım hizmeti sunan yenilikçi marka.</li>
+            <li>Hedef: Dijitalde liderlik, marka bilinirliği, online satış ve müşteri memnuniyetinin artırılması.</li>
+            <li>Vizyon: Türkiye’nin her noktasına hızlı ve güvenli hizmet.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="icon"><i class="fas fa-bolt"></i></span>
+          <h3>Sunum Kapsamı</h3>
+          <ul>
+            <li>Dijital varlıkların analiz ve optimizasyonu</li>
+            <li>Rakip ve pazar karşılaştırmaları</li>
+            <li>SEO, içerik, reklam ve müşteri deneyimi yol haritası</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="section-title"><i class="fas fa-balance-scale"></i> SWOT Analizi</div>
+      <div class="swot-grid">
+        <div class="swot-card"><strong>Güçlü Yönler</strong>
+          <ul>
+            <li>Deneyimli ve dinamik ekip</li>
+            <li>Geniş ürün yelpazesi</li>
+            <li>Yerel pazar bilgisi ve müşteri sadakati</li>
+            <li>Hızlı teslimat ve teknik servis</li>
+          </ul>
+        </div>
+        <div class="swot-card"><strong>Zayıf Yönler</strong>
+          <ul>
+            <li>Yeni dijital altyapı</li>
+            <li>Online müşteri yorumu azlığı</li>
+            <li>Yerel SEO’da gelişim alanı</li>
+          </ul>
+        </div>
+        <div class="swot-card"><strong>Fırsatlar</strong>
+          <ul>
+            <li>Online alışverişte artan talep</li>
+            <li>Rakiplerin dijitalde yeterince güçlü olmaması</li>
+            <li>Yerel influencer ve etkinlik potansiyeli</li>
+          </ul>
+        </div>
+        <div class="swot-card"><strong>Tehditler</strong>
+          <ul>
+            <li>Büyük e-ticaret sitelerinin baskısı</li>
+            <li>Google algoritma güncellemeleri</li>
+            <li>Ekonomik dalgalanmalar</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="section-title"><i class="fas fa-chart-line"></i> KPI ve Başarı Ölçütleri</div>
+      <div class="card-grid">
+        <div class="card">
+          <span class="icon"><i class="fas fa-chart-bar"></i></span>
+          <h3>Organik ve Dijital Büyüme</h3>
+          <div class="kpi-list">
+            <ul>
+              <li>Organik trafik: İlk 6 ayda %100 artış hedefi</li>
+              <li>Siteye gelen yeni kullanıcı oranı: %65+</li>
+              <li>En az 5 anahtar kelimeyle ilk 3’te yer alma</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <span class="icon"><i class="fas fa-users"></i></span>
+          <h3>Etkileşim ve Dönüşüm</h3>
+          <div class="kpi-list">
+            <ul>
+              <li>Dönüşüm oranı: %2,5+</li>
+              <li>Instagram etkileşimi: aylık %15 artış</li>
+              <li>Mobilde PageSpeed 80+, masaüstünde 90+</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="section-title"><i class="fas fa-layer-group"></i> Dijital Varlıklar</div>
+      <div class="card-grid">
+        <div class="card">
+          <span class="icon"><i class="fab fa-google"></i></span>
+          <h3>Google Business</h3>
+          <ul>
+            <li>Mağaza ve servis için optimize kayıt</li>
+            <li>Yorum, puan, fotoğraf ve kategori güncellemesi</li>
+            <li>Yerel arama sonuçlarında üst sıralar</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="icon"><i class="fab fa-instagram"></i></span>
+          <h3>Instagram & Sosyal Medya</h3>
+          <ul>
+            <li>Mağaza, ürün ve hizmet tanıtımları</li>
+            <li>Kampanya, etkinlik ve müşteri deneyimi paylaşımları</li>
+            <li>Story, reels ve canlı yayınlarla etkileşim</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="icon"><i class="fas fa-globe"></i></span>
+          <h3>Web Sitesi</h3>
+          <ul>
+            <li>SEO ve UX odaklı, mobil öncelikli tasarım</li>
+            <li>Kapsamlı ürün, blog, hizmet ve randevu sayfaları</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="section-title"><i class="fas fa-wrench"></i> Teknik SEO Analizi</div>
+      <div class="card-grid">
+        <div class="card">
+          <span class="icon"><i class="fas fa-search"></i></span>
+          <h3>Temel SEO Yapısı</h3>
+          <ul>
+            <li>Her sayfada özgün title, description, canonical</li>
+            <li>Yapısal veri (schema), sosyal medya etiketleri</li>
+            <li>SEO dostu URL, iç linkleme, robots.txt ve sitemap.xml</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+          <h3>Performans ve Hız</h3>
+          <ul>
+            <li>Mobilde 80+, masaüstünde 90+ PageSpeed hedefi</li>
+            <li>Optimize görseller, lazy load, CDN kullanımı</li>
+            <li>Gereksiz JS ve CSS minimizasyonu</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="section-title"><i class="fas fa-file-alt"></i> İçerik Bazlı SEO</div>
+      <div class="card-grid">
+        <div class="card">
+          <span class="icon"><i class="fas fa-edit"></i></span>
+          <h3>İçerik Stratejisi</h3>
+          <ul>
+            <li>Her ürün ve kategori için özgün, detaylı açıklamalar</li>
+            <li>Kullanıcı yorumu ve SSS bölümleriyle zenginleştirme</li>
+            <li>Blog’da “Kayseri’de motosiklet rotaları” gibi lokal içerik</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="icon"><i class="fas fa-check-circle"></i></span>
+          <h3>Audit & Gelişim</h3>
+          <ul>
+            <li>Semrush, Ahrefs, Screaming Frog ile düzenli kontrol</li>
+            <li>Kopya içerik, kırık link ve eksik sayfa tespiti</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="section-title"><i class="fas fa-user-check"></i> Kullanıcı Deneyimi (UX)</div>
+      <div class="card-grid">
+        <div class="card">
+          <span class="icon"><i class="fas fa-mobile-alt"></i></span>
+          <h3>Mobil & Hız</h3>
+          <ul>
+            <li>Responsive ve hızlı alışveriş deneyimi</li>
+            <li>Kullanıcı dostu sepet, kolay ödeme ve canlı destek</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="icon"><i class="fas fa-lock"></i></span>
+          <h3>Güven & Kolaylık</h3>
+          <ul>
+            <li>Güvenli ödeme ve müşteri yorumları</li>
+            <li>Satış sonrası destek, kolay iade ve sadakat programı</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="section-title"><i class="fas fa-key"></i> Anahtar Kelime & Organik Varlık</div>
+      <div class="card">
+        <span class="icon"><i class="fas fa-keyboard"></i></span>
+        <h3>Öne Çıkan Kelimeler</h3>
+        <table class="card-table">
+          <tr><th>Kelime</th><th>Hacim</th><th>Zorluk</th><th>Hedef?</th></tr>
+          <tr><td>motosiklet Kayseri</td><td>2.400</td><td>Orta</td><td>Evet</td></tr>
+          <tr><td>motosiklet kaskı Kayseri</td><td>1.200</td><td>Düşük</td><td>Evet</td></tr>
+          <tr><td>motosiklet bakımı Kayseri</td><td>800</td><td>Düşük</td><td>Evet</td></tr>
+          <tr><td>motosiklet ekipmanları</td><td>3.000</td><td>Orta</td><td>Evet</td></tr>
+          <tr><td>online motosiklet parçası</td><td>2.800</td><td>Orta</td><td>Evet</td></tr>
+          <tr><td>scooter Kayseri</td><td>650</td><td>Orta</td><td>Evet</td></tr>
+        </table>
+        <ul>
+          <li>İçeriklerde hedef kelimeler sistemli biçimde kullanılmalı.</li>
+          <li>Blog ve ürün açıklamalarında lokalizasyon önemli.</li>
+        </ul>
+      </div>
+    </section>
+    <section>
+      <div class="section-title"><i class="fas fa-trophy"></i> Rakip & Referans Analizi</div>
+      <div class="card">
+        <span class="icon"><i class="fas fa-store"></i></span>
+        <h3>Türkiye Çapında Başarılı Örnekler</h3>
+        <table class="card-table">
+          <tr><th>Marka</th><th>SEO Skoru</th><th>Mobil Hız</th><th>Anahtar Kelime</th></tr>
+          <tr><td>Motoplus</td><td>88</td><td>85</td><td>Lider</td></tr>
+          <tr><td>Dainese TR</td><td>90</td><td>80</td><td>Lider</td></tr>
+          <tr><td>Motomax</td><td>83</td><td>80</td><td>Lider</td></tr>
+          <tr><td>Mondial</td><td>78</td><td>70</td><td>Kısmen</td></tr>
+        </table>
+        <ul>
+          <li>Rakipler genellikle zengin içerik, blog ve hızlı altyapı ile öne çıkıyor.</li>
+          <li>Yerel rakipler Google Business ve Instagram’da aktif.</li>
+        </ul>
+      </div>
+    </section>
+    <section>
+      <div class="section-title"><i class="fas fa-link"></i> Backlink & Otorite</div>
+      <div class="card">
+        <span class="icon"><i class="fas fa-share-alt"></i></span>
+        <h3>Stratejik Backlinkler</h3>
+        <ul>
+          <li>Yerel haber siteleri ve motosiklet forumlarında yazılar</li>
+          <li>YouTube ve influencer işbirlikleri</li>
+          <li>Sektörel bloglarda konuk yazarlık</li>
+        </ul>
+      </div>
+    </section>
+    <section>
+      <div class="section-title"><i class="fas fa-bullhorn"></i> Dijital Reklam ve Video Pazarlama</div>
+      <div class="card-grid">
+        <div class="card">
+          <span class="icon"><i class="fas fa-ad"></i></span>
+          <h3>Dijital Reklam</h3>
+          <ul>
+            <li>Google Ads ve Instagram reklamları ile hedefli trafik</li>
+            <li>Yeniden pazarlama (remarketing) ile müşteri geri kazanımı</li>
+            <li>Kampanya dönemlerinde özel indirimler ve toplu iletişim</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="icon"><i class="fab fa-youtube"></i></span>
+          <h3>Video & İçerik Pazarlama</h3>
+          <ul>
+            <li>YouTube’da inceleme/test videoları, Instagram Reels ve TikTok içerikleri</li>
+            <li>“Kayseri’de motosiklet rotaları” ve ekipman tanıtımları</li>
+            <li>Canlı yayınlarla müşteriyle etkileşim</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="section-title"><i class="fas fa-user-shield"></i> Altyapı & Güvenlik</div>
+      <div class="security-list">
+        <ul>
+          <li>SSL, 3D Secure ödeme, KVKK uyumlu veri politikası</li>
+          <li>Güven rozeti, müşteri yorumları ve orijinallik sertifikaları</li>
+          <li>Çift aşamalı doğrulama ve güncel yazılım altyapısı</li>
+        </ul>
+      </div>
+    </section>
+    <section>
+      <div class="section-title"><i class="fas fa-question-circle"></i> SSS & Chatbot</div>
+      <div class="faq-block">
+        <strong>Kaskların garantisi var mı?</strong> Evet, tüm kasklarımız 2 yıl üretici garantilidir.<br><br>
+        <strong>Bakım için randevu nasıl alınır?</strong> Web sitemizden veya WhatsApp hattımızdan kolayca randevu oluşturabilirsiniz.<br><br>
+        <strong>Online aldığım ürünü mağazadan teslim alabilir miyim?</strong> Evet, mağazamızdan elden teslim seçeneği sunuyoruz.<br><br>
+        <strong>Chatbot ile neler yapılabilir?</strong> Sipariş durumu sorgulama, ürün bilgi alma, randevu oluşturma, hızlı destek.
+      </div>
+    </section>
+    <section>
+      <div class="section-title"><i class="fas fa-thumbs-up"></i> Sosyal Kanıt & Müşteri Yorumları</div>
+      <div class="social-proof">
+        <b>Google Yorum (4.8/5):</b> “Mükemmel hizmet, hızlı teslimat. Kaskımı aynı gün teslim aldım!”<br>
+        <b>Instagram DM:</b> “Bakım hizmeti çok iyi, ustalar çok ilgili.”<br>
+        <b>Trustpilot:</b> “Motodocia’dan alışveriş yapmak çok güvenli, kesinlikle tavsiye ederim.”
+      </div>
+    </section>
+    <section>
+      <div class="section-title"><i class="fas fa-map-marker-alt"></i> Yerel SEO & Harita Optimizasyonu</div>
+      <div class="card">
+        <span class="icon"><i class="fas fa-map"></i></span>
+        <h3>Yerel Strateji</h3>
+        <ul>
+          <li>Google/Yandex Maps’te doğru ve tutarlı bilgiler</li>
+          <li>Adres, telefon ve çalışma saatlerinde NAP uyumu</li>
+          <li>Yerel etiketler, güncel fotoğraf ve açıklamalar</li>
+        </ul>
+      </div>
+    </section>
+    <section>
+      <div class="section-title"><i class="fas fa-route"></i> Dönüşüm Hunisi & Müşteri Yolculuğu</div>
+      <div class="journey-steps">
+        <div class="journey-step"><strong>Keşif:</strong><br>Google arama, Instagram keşfet, YouTube önerileri</div>
+        <div class="journey-step"><strong>İnceleme:</strong><br>Ürün sayfası, video, teknik özellikler ve kullanıcı yorumları</div>
+        <div class="journey-step"><strong>Güven:</strong><br>Yorum, puan, sosyal kanıt ve güven rozeti</div>
+        <div class="journey-step"><strong>Karar:</strong><br>Alışveriş sepeti, ödeme, hızlı teslimat</div>
+        <div class="journey-step"><strong>Satış Sonrası:</strong><br>Teslimat, bakım, sadakat programı, destek</div>
+      </div>
+    </section>
+    <section>
+      <div class="section-title"><i class="fas fa-flask"></i> A/B Test & Sürekli İyileştirme</div>
+      <div class="card">
+        <span class="icon"><i class="fas fa-random"></i></span>
+        <h3>Test ve Optimizasyon</h3>
+        <ul>
+          <li>Ana sayfa ve ürün sayfalarında farklı görsel/slogan testleri</li>
+          <li>Buton renkleri ve metin varyasyonları ile dönüşüm oranı artırımı</li>
+          <li>Checkout akışında kısa/uzun form testleriyle alışverişi kolaylaştırma</li>
+        </ul>
+        <div class="kpi-list">
+          Kullanıcı davranışına göre haftalık rapor ve sürekli iyileştirme planı uygulanmalı.
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="section-title"><i class="fas fa-road"></i> Genel Yol Haritası</div>
+      <div class="card-grid">
+        <div class="card">
+          <span class="icon"><i class="fas fa-rocket"></i></span>
+          <h3>Kısa Vadeli Adımlar</h3>
+          <ul>
+            <li>SEO temelleri, hızlı & mobil uyumlu site</li>
+            <li>Google Business ve Instagram optimizasyonu</li>
+            <li>Hedef kelimelerle içeriklerin oluşturulması</li>
+            <li>Yerel SEO ve Maps optimizasyonu</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="icon"><i class="fas fa-chart-pie"></i></span>
+          <h3>Orta-Uzun Vadeli Adımlar</h3>
+          <ul>
+            <li>Blog ve içerik pazarlaması, backlink ağı</li>
+            <li>Sosyal medya reklamları ve e-posta pazarlama</li>
+            <li>A/B testleri ve sürekli UX geliştirme</li>
+            <li>Sadakat programı ve müşteri ilişkileri yönetimi</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div>
+      <b>Kaynaklar & Referanslar:</b><br>
+      Motoplus, Dainese D-Store Turkey, Motomax, Mondial Motosiklet, Arora Motosiklet<br>
+      Ahrefs, Semrush, Screaming Frog SEO Audit, Google PageSpeed Insights
+    </div>
+    <a class="footer-ykbsoft-link" href="https://www.ykbsoft.com/" target="_blank" rel="noopener">
+      <img src="ykbsoft-logo.png" alt="YKB Soft Logo" class="footer-ykbsoft-logo">
+      ykbsoft
+    </a>
+  </footer>
+</body>
+</html>
